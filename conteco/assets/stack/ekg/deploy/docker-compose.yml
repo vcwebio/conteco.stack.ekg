@@ -1,0 +1,8 @@
+---
+version: '3'
+services:
+
+
+networks:
+  ${CONTECO_DC_NETWORKS}:
+    external: true
