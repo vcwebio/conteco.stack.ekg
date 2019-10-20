@@ -9,7 +9,7 @@ services:
     volumes: [${CONTECO_DC_ELASTICSEARCH_VOLUMES}]
     ports: [${CONTECO_DC_ELASTICSEARCH_PORTS}]
     networks: [${CONTECO_DC_ELASTICSEARCH_NETWORKS}]
-    deploy: {${CONTECO_DC_ELASTICSEARCH_DEPLOY}}
+    deploy: [${CONTECO_DC_ELASTICSEARCH_DEPLOY}]
 
   kibana:
     image: ${CONTECO_REGISTRY}${CONTECO_REALM}/${CONTECO_ECOSYSTEM}.kibana.base:7.1.1
@@ -18,7 +18,7 @@ services:
     volumes: [${CONTECO_DC_KIBANA_VOLUMES}]
     ports: [${CONTECO_DC_KIBANA_PORTS}]
     networks: [${CONTECO_DC_KIBANA_NETWORKS}]
-    deploy: {${CONTECO_DC_KIBANA_DEPLOY}}
+    deploy: [${CONTECO_DC_KIBANA_DEPLOY}]
 
   grafana:
     image: ${CONTECO_REGISTRY}${CONTECO_REALM}/${CONTECO_ECOSYSTEM}.grafana.base:6.3.5
@@ -27,7 +27,8 @@ services:
     volumes: [${CONTECO_DC_GRAFANA_VOLUMES}]
     ports: [${CONTECO_DC_GRAFANA_PORTS}]
     networks: [${CONTECO_DC_GRAFANA_NETWORKS}]
-    deploy: {${CONTECO_DC_GRAFANA_DEPLOY}}
+    deploy: [${CONTECO_DC_GRAFANA_DEPLOY}]
 
-networks: {${CONTECO_DC_NETWORKS}}
-
+networks:
+  ${CONTECO_DC_NETWORKS}:
+    external: true
