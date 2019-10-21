@@ -1,12 +1,6 @@
-##### BEGIN image.base/Dockerfile/image-header #####
-FROM vcwebio/conteco.image.wrapper AS wrapper
-FROM vcwebio/conteco.image.base AS base
-##### END image.base/Dockerfile/image-header #####
-
-##### BEGIN image.base/Dockerfile/conteco #####
-COPY --from=wrapper /conteco/ /conteco/
-ENTRYPOINT ["/conteco/bin/image/wrapper/entrypoint"]
-##### END image.base/Dockerfile/conteco #####
+##### BEGIN image/Dockerfile/image-header #####
+FROM vcwebio/conteco.stack.base AS base
+##### END image/Dockerfile/image-header #####
 
 ##### BEGIN image/Dockerfile/conteco #####
 COPY ./conteco/ /conteco/
@@ -18,23 +12,16 @@ COPY ./ /conteco/repo/
 ENV CONTECO_ENTRYPOINT "bash"
 ##### END image/Dockerfile/build-instructions #####
 
-##### BEGIN image.base/Dockerfile/env-labels-footer #####
-ENV CONTECO_REALM="vcwebio" \
-    CONTECO_ECOSYSTEM="conteco" \
-    CONTECO_TYPE="stack" \
-    CONTECO_NAME="base" \
+##### BEGIN image/Dockerfile/env-labels-footer #####
+ENV CONTECO_NAME="ekg" \
     CONTECO_TAG="v1.0.0" \
-    CONTECO_BASE="image.base" \
+    CONTECO_BASE="stack.base" \
     CONTECO_BUILD="image-base"
-LABEL io.vcweb.schema-version="1.0" \
-      io.vcweb.realm="vcwebio" \
-      io.vcweb.ecosystem="conteco" \
-      io.vcweb.type="stack" \
-      io.vcweb.name="base" \
+LABEL io.vcweb.name="ekg" \
       io.vcweb.tag="v1.0.0" \
-      io.vcweb.base="image.base" \
+      io.vcweb.base="stack.base" \
       io.vcweb.build="image-base" \
-      io.vcweb.label="Conteco stack base" \
-      io.vcweb.description="The ContEco stack base image." \
-      io.vcweb.docker.cmd.help="docker run vcwebio/conteco.stack.base --help" 
-##### END image.base/Dockerfile/env-labels-footer #####
+      io.vcweb.label="Conteco base EKG stack" \
+      io.vcweb.description="The ContEco base EKG stack." \
+      io.vcweb.docker.cmd.help="docker run vcwebio/conteco.stack.ekg --help" 
+##### END image/Dockerfile/env-labels-footer #####

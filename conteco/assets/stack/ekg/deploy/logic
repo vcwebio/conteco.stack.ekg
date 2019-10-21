@@ -1,37 +1,19 @@
 #!/usr/bin/env bash
 
-# logic to create and run the stack
+# CREATING A SERVICE STACK
+# 1. Setup initial environment file with the stack services key CONTECO_DC_GLOBAL_SERVICES and empty CONTECO_DC_GLOBAL key
+# 2. Run config deploy to regenerate environment and generate environment.template, docker-compose.yml.template and docker-compose.yml 
+# 3. Add global configuration keys to CONTECO_DC_GLOBAL and move them up for visibility
+# 4. Run config deploy to regenerate all files
+# 5. Run deploy to deploy the stack
 
-# store a list of stack services
+#!/usr/bin/env bash
 
-# generate docker-compose.yml
-# for each service, extract service yml and replace service and image name and rename CONTECO_DC to CONTECO_DC_[service name]
-# create config sets for each service: specfic variables, deploy, ports and networks
+# START STACK CONFIGURATION
+export CONTECO_DC_GLOBAL_SERVICES='elasticsearch.base,kibana.base,grafana.base'
+export CONTECO_DC_GLOBAL='$CONTECO_DC_KIBANA_ELASTICSEARCH_HOSTS'
+# END STACK CONFIGURATION
 
-# logic to scale the stack from tiny to extra large. XXS XS S M L XL XXL ... 
-# memory scaling from M down is halving, from M up is +M
-# instance and other type of scaling
-
-# deploy is fully handler by the stack, service has deploy placeholder
-    deploy:
-      mode: ${CONTECO_DC_DEPLOY_MODE}
-      resources:
-        limits:
-          memory: ${CONTECO_DC_DEPLOY_MEMORY_LIMIT}
-        reservations:
-          memory: ${CONTECO_DC_DEPLOY_MEMORY_RESERVATION}
-
-# end result
-
-export CONTECO_DC_SERVICE_NAME="${CONTECO_TYPE}"
-export CONTECO_DC_IMAGE_NAME="${CONTECO_TYPE}.${CONTECO_NAME}:${CONTECO_TAG}"
-
-export CONTECO_DC_ENV_GF_SERVER_ROOT_URL=""
-
-export CONTECO_DC_DEPLOY_MODE="replicated"
-export CONTECO_DC_DEPLOY_MEMORY_LIMIT="128m"
-export CONTECO_DC_DEPLOY_MEMORY_RESERVATION="128m"
-
-export CONTECO_DC_PORTS="3000:3000"
-
-export CONTECO_DC_NETWORKS="${CONTECO_ECOSYSTEM}_overlay"
+# START GLOBAL SERVICE CONFIGURATION
+export CONTECO_DC_KIBANA_ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+# END GLOBAL SERVICE CONFIGURATION
