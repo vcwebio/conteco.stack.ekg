@@ -10,29 +10,56 @@ services:
     volumes: ['${CONTECO_DC_ELASTICSEARCH_VOLUMES_NAME}:/usr/share/elasticsearch/data']
     ports: [${CONTECO_DC_ELASTICSEARCH_PORTS}]
     networks: [${CONTECO_DC_ELASTICSEARCH_NETWORKS}]
-    deploy: {${CONTECO_DC_ELASTICSEARCH_DEPLOY}}
+    deploy:
+      mode: replicated
+      replicas: 1
+      resources: 
+        limits: 
+          cpus: '${CONTECO_DC_ELASTICSEARCH_DEPLOY_RESOURCES_LIMITS_CPUS}'
+          memory: ${CONTECO_DC_ELASTICSEARCH_DEPLOY_RESOURCES_LIMITS_MEMORY}
+        reservations:
+          cpus: '${CONTECO_DC_ELASTICSEARCH_DEPLOY_RESOURCES_RESERVATIONS_CPUS}'
+          memory: ${CONTECO_DC_ELASTICSEARCH_DEPLOY_RESOURCES_RESERVATIONS_MEMORY}
 # END SERVICE elasticsearch.base
 
 # START SERVICE kibana.base
   kibana:
     image: ${CONTECO_REGISTRY}${CONTECO_REALM}/${CONTECO_ECOSYSTEM}.kibana.base:7.1.1
-    environment: ['ELASTICSEARCH_HOSTS=http://elasticsearch:9200', 'SERVER_BASEPATH=${CONTECO_DC_KIBANA_SERVER_BASEPATH}'] 
+    environment: ['ELASTICSEARCH_HOSTS=${CONTECO_DC_KIBANA_ENVIRONMENT_ELASTICSEARCH_HOSTS}', 'SERVER_BASEPATH=${CONTECO_DC_KIBANA_ENVIRONMENT_SERVER_BASEPATH}'] 
     command: []
     volumes: []
     ports: [${CONTECO_DC_KIBANA_PORTS}]
     networks: [${CONTECO_DC_KIBANA_NETWORKS}]
-    deploy: {${CONTECO_DC_KIBANA_DEPLOY}}
+    deploy:
+      mode: replicated
+      replicas: 1
+      resources: 
+        limits: 
+          cpus: '${CONTECO_DC_KIBANA_DEPLOY_RESOURCES_LIMITS_CPUS}'
+          memory: ${CONTECO_DC_KIBANA_DEPLOY_RESOURCES_LIMITS_MEMORY}
+        reservations:
+          cpus: '${CONTECO_DC_KIBANA_DEPLOY_RESOURCES_RESERVATIONS_CPUS}'
+          memory: ${CONTECO_DC_KIBANA_DEPLOY_RESOURCES_RESERVATIONS_MEMORY}
 # END SERVICE kibana.base
 
 # START SERVICE grafana.base
   grafana:
     image: ${CONTECO_REGISTRY}${CONTECO_REALM}/${CONTECO_ECOSYSTEM}.grafana.base:6.3.5
-    environment: ['GF_LOG_FORMAT=json', 'GF_LOG_FILE_FORMAT=json', 'GF_LOG_CONSOLE_FORMAT=json', 'GF_LOG_SYSLOG_FORMAT=json', 'GF_LOG_LEVEL=warn', 'GF_SERVER_ROOT_URL=${CONTECO_DC_GRAFANA_ENV_GF_SERVER_ROOT_URL}'] 
+    environment: ['GF_LOG_FORMAT=json', 'GF_LOG_FILE_FORMAT=json', 'GF_LOG_CONSOLE_FORMAT=json', 'GF_LOG_SYSLOG_FORMAT=json', 'GF_LOG_LEVEL=warn', 'GF_SERVER_ROOT_URL=${CONTECO_DC_GRAFANA_ENVIRONMENT_GF_SERVER_ROOT_URL}'] 
     command: []
     volumes: ['${CONTECO_DC_GRAFANA_VOLUMES_NAME}:/var/lib/grafana']
     ports: [${CONTECO_DC_GRAFANA_PORTS}]
     networks: [${CONTECO_DC_GRAFANA_NETWORKS}]
-    deploy: {${CONTECO_DC_GRAFANA_DEPLOY}}
+    deploy:
+      mode: replicated
+      replicas: 1
+      resources: 
+        limits: 
+          cpus: '${CONTECO_DC_GRAFANA_DEPLOY_RESOURCES_LIMITS_CPUS}'
+          memory: ${CONTECO_DC_GRAFANA_DEPLOY_RESOURCES_LIMITS_MEMORY}
+        reservations:
+          cpus: '${CONTECO_DC_GRAFANA_DEPLOY_RESOURCES_RESERVATIONS_CPUS}'
+          memory: ${CONTECO_DC_GRAFANA_DEPLOY_RESOURCES_RESERVATIONS_MEMORY}
 # END SERVICE grafana.base
 
 networks: {${CONTECO_DC_GLOBAL_NETWORKS}}
