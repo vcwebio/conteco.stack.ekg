@@ -12,14 +12,13 @@ services:
     networks: [${CONTECO_DC_ELASTICSEARCH_NETWORKS}]
     deploy:
       mode: replicated
-      replicas: 1
       resources: 
         limits: 
           cpus: '${CONTECO_DC_ELASTICSEARCH_DEPLOY_RESOURCES_LIMITS_CPUS}'
-          memory: ${CONTECO_DC_ELASTICSEARCH_DEPLOY_RESOURCES_LIMITS_MEMORY}
+          memory: '${CONTECO_DC_ELASTICSEARCH_DEPLOY_RESOURCES_LIMITS_MEMORY}'
         reservations:
           cpus: '${CONTECO_DC_ELASTICSEARCH_DEPLOY_RESOURCES_RESERVATIONS_CPUS}'
-          memory: ${CONTECO_DC_ELASTICSEARCH_DEPLOY_RESOURCES_RESERVATIONS_MEMORY}
+          memory: '${CONTECO_DC_ELASTICSEARCH_DEPLOY_RESOURCES_RESERVATIONS_MEMORY}'
 # END SERVICE elasticsearch.base
 
 # START SERVICE kibana.base
@@ -32,14 +31,13 @@ services:
     networks: [${CONTECO_DC_KIBANA_NETWORKS}]
     deploy:
       mode: replicated
-      replicas: 1
       resources: 
         limits: 
           cpus: '${CONTECO_DC_KIBANA_DEPLOY_RESOURCES_LIMITS_CPUS}'
-          memory: ${CONTECO_DC_KIBANA_DEPLOY_RESOURCES_LIMITS_MEMORY}
+          memory: '${CONTECO_DC_KIBANA_DEPLOY_RESOURCES_LIMITS_MEMORY}'
         reservations:
           cpus: '${CONTECO_DC_KIBANA_DEPLOY_RESOURCES_RESERVATIONS_CPUS}'
-          memory: ${CONTECO_DC_KIBANA_DEPLOY_RESOURCES_RESERVATIONS_MEMORY}
+          memory: '${CONTECO_DC_KIBANA_DEPLOY_RESOURCES_RESERVATIONS_MEMORY}'
 # END SERVICE kibana.base
 
 # START SERVICE grafana.base
@@ -52,14 +50,13 @@ services:
     networks: [${CONTECO_DC_GRAFANA_NETWORKS}]
     deploy:
       mode: replicated
-      replicas: 1
       resources: 
         limits: 
           cpus: '${CONTECO_DC_GRAFANA_DEPLOY_RESOURCES_LIMITS_CPUS}'
-          memory: ${CONTECO_DC_GRAFANA_DEPLOY_RESOURCES_LIMITS_MEMORY}
+          memory: '${CONTECO_DC_GRAFANA_DEPLOY_RESOURCES_LIMITS_MEMORY}'
         reservations:
           cpus: '${CONTECO_DC_GRAFANA_DEPLOY_RESOURCES_RESERVATIONS_CPUS}'
-          memory: ${CONTECO_DC_GRAFANA_DEPLOY_RESOURCES_RESERVATIONS_MEMORY}
+          memory: '${CONTECO_DC_GRAFANA_DEPLOY_RESOURCES_RESERVATIONS_MEMORY}'
 # END SERVICE grafana.base
 
 networks: {${CONTECO_DC_GLOBAL_NETWORKS}}
