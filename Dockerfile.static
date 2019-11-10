@@ -16,11 +16,11 @@ ENV CONTECO_ENTRYPOINT "bash"
 ENV CONTECO_NAME="ekg" \
     CONTECO_TAG="v1.0.0" \
     CONTECO_BASE="stack.base" \
-    CONTECO_BUILD="image-base"
+    CONTECO_BUILD="image"
 LABEL io.vcweb.name="ekg" \
       io.vcweb.tag="v1.0.0" \
       io.vcweb.base="stack.base" \
-      io.vcweb.build="image-base" \
+      io.vcweb.build="image" \
       io.vcweb.label="Conteco base EKG stack" \
       io.vcweb.description="The ContEco base EKG stack." \
       io.vcweb.docker.cmd.help="docker run vcwebio/conteco.stack.ekg --help" 
