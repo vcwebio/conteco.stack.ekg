@@ -1,11 +1,15 @@
-# The Conteco base EKG stack
+# `stack.ekg` - ContEco
 
-The base EKG stack stack. 
+EKG Stack image, consisting of ElasticSearch, Grafana and Kibana.
+See `conteco.docs.overview` for more information on the ContEco ecosystem.
 
-## Modifications
+## Configuration
 
-None.
+The stack consists of the following services:
+* ElasticSearch - elasticsearch.base
+* Grafana - grafana.base
+* Kibana - kibana.base
 
 ## Tags
 
-* v1.0.0 
+* v1.0.0
