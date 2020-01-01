@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
 # START CONFIGURATION
-export CONTECO_DC_GLOBAL_STACKS='stack.ekg'
-export CONTECO_DC_GLOBAL_STACKNAMES='ekg'
-export CONTECO_DC_GLOBAL_VOLUME_LIST='elasticsearch_volume,grafana_volume'
+export CONTECO_DC_GLOBAL_STACKS="stack.ekg"
+export CONTECO_DC_GLOBAL_STACKNAMES="ekg"
+export CONTECO_DC_GLOBAL_BOOTSTACKS="ekg"
+export CONTECO_DC_GLOBAL_RUNSTACKS=""
+export CONTECO_DC_GLOBAL_VOLUME_LIST="elasticsearch_volume,grafana_volume"
 # END CONFIGURATION
 
 # START OTHER VARIABLES
