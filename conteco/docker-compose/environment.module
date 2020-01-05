@@ -5,16 +5,13 @@ export CONTECO_DC_GLOBAL_STACKS="stack.ekg"
 export CONTECO_DC_GLOBAL_STACKNAMES="ekg"
 export CONTECO_DC_GLOBAL_BOOTSTACKS="ekg"
 export CONTECO_DC_GLOBAL_RUNSTACKS=""
-export CONTECO_DC_GLOBAL_VOLUME_LIST="elasticsearch_volume,grafana_volume"
+export CONTECO_DC_GLOBAL_VOLUME_LIST="conteco_dc_elasticsearch_volume,conteco_dc_grafana_volume"
 # END CONFIGURATION
 
 # START OTHER VARIABLES
 # END OTHER VARIABLES
 
 # START VOLUMES VARIABLES
-export CONTECO_DC_EKG_ELASTICSEARCH_VOLUMES="'${CONTECO_TYPE}_elasticsearch_volume:/usr/share/elasticsearch/data'"
-export CONTECO_DC_EKG_GRAFANA_VOLUMES="'${CONTECO_TYPE}_grafana_volume:/var/lib/grafana'"
-export CONTECO_DC_GLOBAL_VOLUMES=""
 # END VOLUMES VARIABLES
 
 # START PORTS VARIABLES

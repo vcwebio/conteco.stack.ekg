@@ -7,7 +7,7 @@ services:
     image: ${CONTECO_REGISTRY}${CONTECO_REALM}/conteco.elasticsearch.base:7.1.1
     environment: ['cluster.name=elasticsearch', 'bootstrap.memory_lock=true', ES_JAVA_OPTS=-Xms${CONTECO_DC_EKG_ELASTICSEARCH_DEPLOY_RESOURCES_RESERVATIONS_MEMORY} -Xmx${CONTECO_DC_EKG_ELASTICSEARCH_DEPLOY_RESOURCES_RESERVATIONS_MEMORY}, 'discovery.type=single-node']
     command: []
-    volumes: [${CONTECO_DC_EKG_ELASTICSEARCH_VOLUMES}]
+    volumes: ['${CONTECO_TYPE}_conteco_dc_elasticsearch_volume:/usr/share/elasticsearch/data']
     ports: []
     networks: [${CONTECO_TYPE}_overlay]
     deploy:
@@ -47,7 +47,7 @@ services:
     image: ${CONTECO_REGISTRY}${CONTECO_REALM}/conteco.grafana.base:6.3.5
     environment: ['GF_LOG_FORMAT=json', 'GF_LOG_FILE_FORMAT=json', 'GF_LOG_CONSOLE_FORMAT=json', 'GF_LOG_SYSLOG_FORMAT=json', 'GF_LOG_LEVEL=warn', GF_SERVER_ROOT_URL=/${CONTECO_TYPE}/grafana]
     command: []
-    volumes: [${CONTECO_DC_EKG_GRAFANA_VOLUMES}]
+    volumes: ['${CONTECO_TYPE}_conteco_dc_grafana_volume:/var/lib/grafana']
     ports: []
     networks: [${CONTECO_TYPE}_overlay]
     deploy:
@@ -63,5 +63,5 @@ services:
 # END SERVICE grafana.base
 
 networks: {${CONTECO_TYPE}_overlay: { external: true }}
-volumes: {${CONTECO_DC_GLOBAL_VOLUMES}}
+volumes: {${CONTECO_TYPE}_conteco_dc_elasticsearch_volume: { external: true },${CONTECO_TYPE}_conteco_dc_grafana_volume: { external: true },}
 
