@@ -12,4 +12,5 @@ The stack consists of the following services:
 
 ## Tags
 
-* v1.0.0
+* 7.8.0 (latest)  
+* 7.1.1
