@@ -5,7 +5,7 @@ export CONTECO_DESCRIPTION="EKG Stack image, consisting of ElasticSearch, Grafan
 
 export CONTECO_TYPE="stack"
 export CONTECO_NAME="ekg"
-export CONTECO_TAG="7.1.1"
+export CONTECO_TAG="7.8.0"
 
 export CONTECO_BASE="image.wrapper"
 export CONTECO_BUILD="image"
