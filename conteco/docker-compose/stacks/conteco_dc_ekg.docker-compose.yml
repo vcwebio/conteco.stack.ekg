@@ -36,7 +36,7 @@ services:
     networks: [${CONTECO_NETWORKLOCAL}_overlay]
     deploy:
       mode: replicated
-      replicas: ${CONTECO_DC_EKG_KIBANA_DEPLOY_REPLICAS}
+      ${CONTECO_DC_EKG_KIBANA_DEPLOY_MODE_REPLICATED_REPLICAS}
       resources:
         limits:
           cpus: '${CONTECO_DC_EKG_KIBANA_DEPLOY_RESOURCES_LIMITS_CPUS}'
@@ -60,7 +60,7 @@ services:
     networks: [${CONTECO_NETWORKLOCAL}_overlay]
     deploy:
       mode: replicated
-      replicas: ${CONTECO_DC_EKG_GRAFANA_DEPLOY_REPLICAS}
+      ${CONTECO_DC_EKG_GRAFANA_DEPLOY_MODE_REPLICATED_REPLICAS}
       resources:
         limits:
           cpus: '${CONTECO_DC_EKG_GRAFANA_DEPLOY_RESOURCES_LIMITS_CPUS}'
