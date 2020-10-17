@@ -14,12 +14,12 @@ COPY ./ /conteco/repo/
 ##### BEGIN image/Dockerfile/env-labels-footer #####
 ENV CONTECO_TYPE="stack" \
     CONTECO_NAME="ekg" \
-    CONTECO_TAG="7.8.0" \
+    CONTECO_TAG="7.9.2" \
     CONTECO_BASE="image.wrapper" \
     CONTECO_BUILD="image"
 LABEL io.vcweb.type="stack" \
       io.vcweb.name="ekg" \
-      io.vcweb.tag="7.8.0" \
+      io.vcweb.tag="7.9.2" \
       io.vcweb.base="image.wrapper" \
       io.vcweb.build="image" \
       io.vcweb.label="stack.ekg - ContEco" \
